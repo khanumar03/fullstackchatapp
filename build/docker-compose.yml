@@ -16,8 +16,7 @@ services:
     container_name: server
     ports:
       - "5000:5000"
-    environment:
-      - DATABASE_URL=mongodb+srv://fullstackwebapp:khan9594@cluster0.4zd87dc.mongodb.net/test?retryWrites=true&w=majority
+
     networks:
       - webApp
 
@@ -28,8 +27,7 @@ services:
       - appserver
     ports:
       - "3000:3000"
-    environment:
-      - VITE_APP_CLERK_PUBLISHABLE_KEY=pk_test_cHJlY2lvdXMtcGhlYXNhbnQtMTguY2xlcmsuYWNjb3VudHMuZGV2JA
+
     networks:
       - webApp
 
