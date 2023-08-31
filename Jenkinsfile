@@ -5,7 +5,7 @@ pipeline {
         stage("Build") {
             steps  {
                 sh 'ls'
-                sh 'sudo docker -v'
+                sh 'docker -v'
             }
         }
 
