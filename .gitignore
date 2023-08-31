@@ -1,0 +1,9 @@
+.git
+node_modules
+.env
+package-lock.json
+.terraform
+variables.tf
+.terraform.lock.hcl
+terraform.tfstate.backup
+terraform.tfstate
