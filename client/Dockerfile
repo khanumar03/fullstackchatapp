@@ -3,8 +3,9 @@ FROM node:18-alpine
 WORKDIR /app-client
 
 COPY package.json /app-client/
+COPY package-lock.json /app-client/
 
-RUN npm install 
+RUN npm ci
 
 COPY . /app-client/
 

@@ -3,6 +3,7 @@ FROM node:18-alpine
 WORKDIR /app-server
 
 COPY package.json /app-server/
+COPY package-lock.json /app-server/
 
 RUN npm ci
 
