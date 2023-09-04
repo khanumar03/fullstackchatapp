@@ -1,4 +1,5 @@
 // require("dotenv").config();
+
 import express, { Application } from "express";
 import cors from "cors";
 import { router } from "./Router";
@@ -17,7 +18,6 @@ const store = new MongoStore({
   collectionName: "session",
   stringify: false,
 });
-
 
 const io = new Server(server, {
   cors: {
