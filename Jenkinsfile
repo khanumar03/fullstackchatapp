@@ -32,7 +32,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'DATABASEURL', variable: 'D_KEY'), string(credentialsId: 'CLERK_KEY', variable: 'C_KEY')]) {
                         sh "export DATABASEURL=${D_KEY}"
                         sh "export CLERKKEY=${C_KEY}"
-                        sh 'docker-compose up'
+                        sh 'docker-compose -v up'
                     }
                 }
             }
