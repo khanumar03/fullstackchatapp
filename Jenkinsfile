@@ -15,8 +15,8 @@ pipeline {
         stage("test") {
             steps {
                  withCredentials([usernamePassword(credentialsId: "dockerHub", passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]) {
-                    sh 'docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}'
-                    sh 'docker logout'
+                    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+                    sh "docker logout"
                 }
                 echo 'testing'
             }
