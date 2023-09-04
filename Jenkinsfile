@@ -7,9 +7,6 @@ pipeline {
                  withCredentials([usernamePassword(credentialsId: "dockerHub", passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]) {
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
                 }
-            }
-
-            steps {
                 sh "docker-compose build"
                 sh "docker images"
             }
