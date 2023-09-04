@@ -27,15 +27,7 @@ pipeline {
         stage('Deployment') {
             steps {
                 dir('build') {
-                    withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable:'dockerHubPass', usernameVariable:'dockerHubUser')]) {
-                        sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                    }
-                    withCredentials([string(credentialsId: 'CLERK_KEY', variable: 'C_KEY'), string(credentialsId: 'DATABASEURL', variable: 'D_KEY')]) {
-                        sh "export CLERKKEY=${C_KEY}"
-                        sh "export DATABASEURL=${D_KEY}"
-                        sh 'ls'
                         sh 'docker-compose up'
-                    }
                 }
             }
         }
