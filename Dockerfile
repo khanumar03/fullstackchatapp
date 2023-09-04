@@ -4,7 +4,7 @@ WORKDIR /app-server
 
 COPY package.json /app-server/
 
-RUN npm install
+RUN npm ci
 
 COPY . /app-server/
 
