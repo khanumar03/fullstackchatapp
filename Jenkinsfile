@@ -8,7 +8,7 @@ pipeline {
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
                 }
                 sh "ls"
-                sh "docker-compose build"
+                sh "docker-compose --verbose build"
                 sh "docker images"
             }
         }
