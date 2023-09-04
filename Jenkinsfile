@@ -7,8 +7,8 @@ pipeline {
                 sh 'ls'
                 sh 'docker -v'
                 withCredentials([string(credentialsId: 'DATABASEURL',  variable: 'KEY_1')]) {
-                    sh 'export DATABASEURL="${KEY_1}"'
-                    sh '${DATABASEURL}'
+                    sh 'export DATABASEURL="khan"'
+                    sh '${KEY_1}'
                 }
             }
         }
