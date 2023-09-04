@@ -15,7 +15,7 @@ services:
     image: khanumar03/webappdeployment:server-v1
     container_name: server
     environment:
-      - DATABASE_URL=mongodb+srv://fullstackwebapp:khan9594@cluster0.4zd87dc.mongodb.net/test?retryWrites=true&w=majority
+      - DATABASE_URL=
     networks:
       - webApp
 
@@ -23,7 +23,7 @@ services:
     image: khanumar03/webappdeployment:client-v1
     container_name: client
     environment:
-      - VITE_APP_CLERK_PUBLISHABLE_KEY=pk_test_cHJlY2lvdXMtcGhlYXNhbnQtMTguY2xlcmsuYWNjb3VudHMuZGV2JA
+      - VITE_APP_CLERK_PUBLISHABLE_KEY=
     depends_on:
       - appserver
     ports:
