@@ -16,8 +16,6 @@ services:
     container_name: server
     environment:
       - DATABASEURL=mongodb+srv://fullstackwebapp:khan9594@cluster0.4zd87dc.mongodb.net/test?retryWrites=true&w=majority
-    ports:
-      - "5000:5000"
     networks:
       - webApp
 
