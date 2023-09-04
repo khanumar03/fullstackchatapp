@@ -13,15 +13,14 @@ pipeline {
                 sh 'docker tag webapp_appclient khanumar03/webappdeployment:client-v1'
                 sh 'docker tag webapp_appserver khanumar03/webappdeployment:server-v1'
                 sh 'docker tag webapp_nginx khanumar03/webappdeployment:nginx-v1'
-                sh 'docker push khanumar03/webappdeployment:client-v1'
-                sh 'docker push khanumar03/webappdeployment:server-v1'
-                sh 'docker push khanumar03/webappdeployment:nginx-v1'
             }
         }
 
-        stage('test') {
+        stage('Pushing-images') {
             steps {
-                echo 'testing'
+                sh 'docker push khanumar03/webappdeployment:client-v1'
+                sh 'docker push khanumar03/webappdeployment:server-v1'
+                sh 'docker push khanumar03/webappdeployment:nginx-v1'
             }
         }
 
@@ -29,10 +28,11 @@ pipeline {
             steps {
                 sh 'docker network create webApp'
                 dir('build') {
-                    withCredentials([string(credentialsId: 'DATABASEURL', variable: 'D_KEY'), string(credentialsId: 'CLERK_KEY', variable: 'C_KEY')]) {
-                        sh "export DATABASEURL=${D_KEY}"
+                    withCredentials([string(credentialsId: 'CLERK_KEY', variable: 'C_KEY'), string(credentialsId: 'DATABASEURL', variable: 'D_KEY')]) {
                         sh "export CLERKKEY=${C_KEY}"
-                        sh 'docker-compose -v up'
+                        sh "export DATABASEURL=${D_KEY}"
+                        sh 'ls'
+                        sh 'docker-compose up'
                     }
                 }
             }
