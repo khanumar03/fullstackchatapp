@@ -3,29 +3,33 @@ pipeline {
 
     stages {
         stage("Build") {
-            steps  {
-                sh 'ls'
-                sh 'docker -v'
-                withCredentials([string(credentialsId: 'DATABASEURL',  variable: 'KEY_1')]) {
-                    sh 'export DATABASEURL=${KEY_1}'
+            steps {
+                 withCredentials([usernamePassword(credentialsId: "dockerHub", passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]) {
+                    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
                 }
+            }
+
+            steps {
+                sh "docker-compose build"
+                sh "docker images"
             }
         }
 
         stage("test") {
-            steps {
-                 withCredentials([usernamePassword(credentialsId: "dockerHub", passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]) {
-                    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                    sh "docker logout"
-                }
-                echo 'testing'
-            }
+            echo "testing"
         }
 
         stage("Deployment") {
             steps {
                 dir ("build") {
-                    sh 'ls'
+                    steps  {
+                       withCredentials([string(credentialsId: 'DATABASEURL',  variable: 'D_KEY'),string(credentialsId: 'CLERK_KEY',  variable: 'C_KEY')]) {
+                       sh "export DATABASEURL=${D_KEY}"
+                       sh "export CLERKKEY=${D_KEY}"
+                       sh "docker compose up"
+                    }
+                 }
+                    
                 }
             }
         }

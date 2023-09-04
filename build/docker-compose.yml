@@ -25,7 +25,7 @@ services:
     build: khanumar03/webappdeployment:client-v1
     container_name: client
     environment:
-      - VITE_APP_CLERK_PUBLISHABLE_KEY=${CLERK_KEY}
+      - VITE_APP_CLERK_PUBLISHABLE_KEY=${CLERKKEY}
     depends_on:
       - appserver
     ports:
