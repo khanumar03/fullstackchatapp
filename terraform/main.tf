@@ -98,7 +98,7 @@ resource "aws_security_group_rule" "internet_egress_rule" {
 
 resource "aws_instance" "webapp_ec2" {
   ami                    = "ami-053b0d53c279acc90"
-  instance_type          = "t2.micro"
+  instance_type          = "t2.large"
   key_name               = aws_key_pair.ec2_key_pair.id
   vpc_security_group_ids = [aws_security_group.myapp_vpc_sg.id]
   subnet_id              = aws_subnet.myapp_vpc_sn.id
