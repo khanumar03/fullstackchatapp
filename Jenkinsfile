@@ -26,7 +26,6 @@ pipeline {
 
         stage('Deployment') {
             steps {
-                sh 'docker network create webApp'
                 dir('build') {
                     withCredentials([string(credentialsId: 'CLERK_KEY', variable: 'C_KEY'), string(credentialsId: 'DATABASEURL', variable: 'D_KEY')]) {
                         sh "export CLERKKEY=${C_KEY}"
