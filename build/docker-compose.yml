@@ -22,7 +22,7 @@ services:
       - webApp
 
   appclient:
-    build: khanumar03/webappdeployment:client-v1
+    image: khanumar03/webappdeployment:client-v1
     container_name: client
     environment:
       - VITE_APP_CLERK_PUBLISHABLE_KEY=pk_test_cHJlY2lvdXMtcGhlYXNhbnQtMTguY2xlcmsuYWNjb3VudHMuZGV2JA
