@@ -14,20 +14,22 @@ services:
   appserver:
     image: khanumar03/webappdeployment:server-v1
     container_name: server
+    environment:
+      - DATABASEURL=${DATABASEURL}
     ports:
       - "5000:5000"
-
     networks:
       - webApp
 
   appclient:
     build: khanumar03/webappdeployment:client-v1
     container_name: client
+    environment:
+      - VITE_APP_CLERK_PUBLISHABLE_KEY=${CLERK_KEY}
     depends_on:
       - appserver
     ports:
       - "3000:3000"
-
     networks:
       - webApp
 

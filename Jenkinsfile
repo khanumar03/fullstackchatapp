@@ -6,6 +6,10 @@ pipeline {
             steps  {
                 sh 'ls'
                 sh 'docker -v'
+                withCredentials([string(credentialsId: 'DATABASEURL',  variable: 'D_KEY')]) {
+                    sh 'export DATABASEURL=$D_KEY'
+                    sh '${DATABASEURL}'
+                }
             }
         }
 
