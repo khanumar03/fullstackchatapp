@@ -2,7 +2,7 @@
 
 interface ImportMetaEnv {
   readonly VITE_APP_CLERK_PUBLISHABLE_KEY: string;
-  readonly uri: string;
+  readonly IP: string;
 }
 
 interface ImportMeta {
